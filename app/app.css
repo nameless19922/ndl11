@@ -1,0 +1,54 @@
+/* app css stylesheet */
+
+.menu {
+    list-style: none;
+    border-bottom: 0.1em solid #ccc;
+    margin-bottom: 2em;
+    padding: 0 0 0.5em;
+}
+
+.layout {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.menu:before {
+    content: "[";
+}
+
+.menu:after {
+    content: "]";
+}
+
+.menu > li {
+    display: inline;
+}
+
+.menu > li + li:before {
+    content: "|";
+    padding-right: 0.3em;
+}
+
+.water {
+   color: #00f;
+}
+
+.fire {
+    color: #f00;
+}
+
+.grass {
+    color: #0f0;
+}
+
+.list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.controls__item {
+    display: inline-block;
+    margin-right: 25px;
+    vertical-align: top;
+}

@@ -1,0 +1,48 @@
+<div class="controls">
+    <div class="controls__item">
+        Найти:
+        <input ng-model="myQuery" ng-change="search()" placeholder="Поиск"><br><br>
+    </div>
+
+    <div class="controls__item">
+        Сортировать по:
+        <select ng-model="orderSort">
+            <option value="id">ID</option>
+            <option value="weight">Весу</option>
+            <option value="-weight">Весу (по убыванию)</option>
+            <option value="height">Росту</option>
+            <option value="name">Имени</option>
+        </select>
+    </div>
+
+    <div class="controls__item">
+        Фильтровать по типу:
+        <select ng-model="filterType">
+            <option value="all">all</option>
+            <option value="grass">grass</option>
+            <option value="poison">poison</option>
+            <option value="fire">fire</option>
+            <option value="water">water</option>
+            <option value="normal">normal</option>
+            <option value="electric">electric</option>
+        </select>
+    </div>
+</div>
+
+<p ng-show="myQuery">
+    Выведены покемоны, содержащие:
+    <b>{{ myQuery }}</b>
+</p>
+
+<ul class="list" ng-if="filtered.length">
+    <li class="list__item" ng-repeat="pokemon in filtered | orderBy: orderSort | filterBy: filterType">
+        <img ng-click="showName(pokemon)" src="{{ pokemon.ThumbnailImage }}">
+
+        <small>ID #{{pokemon.id }}</small>
+        <h1 ng-class="pokemon.type[0]">{{ pokemon.name }}</h1>
+        <p>Вес: {{ pokemon.weight }}, рост: {{ pokemon.height }}</p>
+        <p>Тип: {{ pokemon.type[0] }}</p>
+        <hr />
+    </li>
+</ul>
+<div ng-if="!filtered.length">Ничего не найдено</div>
